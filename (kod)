@@ -1,0 +1,27 @@
+// Buzzer'ın bağlandığı pin
+const int buzzerPin = 9;
+// Düğmenin bağlandığı pin
+const int buttonPin = 7;
+// Düğmenin durumu
+int buttonState = 0;
+
+void setup() {
+  pinMode(buzzerPin, OUTPUT);
+  pinMode(buttonPin, INPUT_PULLUP);
+}
+
+void loop() {
+  // Düğme basıldığında zili çal
+  buttonState = digitalRead(buttonPin);
+  if (buttonState == LOW) {
+    asansorZiliCaldi();
+  }
+  delay(100); // Düğme okuma için kısa bir bekleme
+}
+
+void asansorZiliCaldi() {
+  // Zil çalma işlemi
+  tone(buzzerPin, 1000); // Zil sesi başlat
+  delay(200); // Zil sesinin uzunluğu, ihtiyaca göre ayarlayabilirsiniz
+  noTone(buzzerPin); // Zil sesi durdur
+}
